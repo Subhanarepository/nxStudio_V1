@@ -16,7 +16,7 @@ public class LoginPage {
 		PageFactory.initElements(rdriver, this);
 	}
 	
-	@FindBy(name="uid")
+	@FindBy(id="login-email-field")
 	@CacheLookup 
 	WebElement txtUserName;
 	
@@ -26,14 +26,20 @@ public class LoginPage {
 	//It is useful when the elements that are always going to be there. For AJAX based applications, it may not work where the DOM changes based on user 
 	//action on the page, otherwise every time when we use a Web Element the WebDriver will go and search it again.
 	
-	@FindBy(name="password")
+	@FindBy(id="login-password-field")
 	@CacheLookup 
 	WebElement txtPassword;
 	
-	@FindBy(name="btnLogin")
+	@FindBy(id="user-login-btn")
 	@CacheLookup 
 	WebElement btnLogin;
 	
+	/*
+	 * @FindBy(xpath
+	 * ="//*[@id=\"wrapper\"]/app-sidebar/div/div[3]/div[2]/div[2]/div/div[2]")
+	 * 
+	 * @CacheLookup WebElement btnLogout;
+	 */
 	
 	public void setUserName(String uname)
 	{
@@ -50,5 +56,7 @@ public class LoginPage {
 		btnLogin.click();
 	}
 	
-	
+	/*
+	 * public void clickLogout() { btnLogout.click(); }
+	 */
 }

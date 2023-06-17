@@ -1,67 +1,50 @@
 package com.nxstudio.testCases;
 
-//import org.apache.log4j.Logger;
-//import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
-
-//import com.nxstudio.utilities.ReadConfig;
-//import io.github.bonigarcia.wdm.WebDriverManager;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
-
-//ReadConfig readconfig = new ReadConfig();
 	
-	public String baseURL = "https://demo.guru99.com/V4/";
-	public String username = "mngr505693";
-	public String password = "agegEsE";
+	ExtentReports extent = new ExtentReports();
+	ExtentSparkReporter spark = new ExtentSparkReporter("ExtentReport.html");
+	
+	//Login
+	public String baseURL = "https://nxcasadigi-studio-qa.project.casadigi.com/login";
+	public String username = "subhana.khan@digivalet.com";
+	public String password = "CasaDigi@4.0";
 	public static WebDriver driver;
+	
+	//Add user
+	public String FirstName = "Rachel";
+	public String LastName = "Swan";
+	public String Email = "RachelSwan@gmail.com";
+	
+	//Forget Password
+	public String forgetEmail = "subhana.khan@digivalet.com";
+	
+	
 
-	//public static Logger logger;
-	
-	@Parameters("browser")
 	@BeforeClass
-	public void setup(String br)
+	public void setup()
 	{
-		//System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"//Drivers//chromedriver 2");
-		//System.setProperty("webdriver.chrome.driver","‪‪/Drivers/chromedriver‬‬ 2");
-		//System.setProperty("webdriver.chrome.driver","/Users/subhanakhan/Downloads/chromedriver 2");
-		//WebDriverManager.chromedriver().setup();
-		
-		/*
-		 * System.setProperty("webdriver.chrome.driver",
-		 * "C:\\Users\\Subhana Khan\\eclipse-workspace\\nxStudio_V1\\Drivers\\chromedriver.exe"
-		 * ); d
-		driver = new ChromeDriver(); */
-		
-		
-		/*
-		 * WebDriverManager.chromedriver().setup(); driver = new ChromeDriver(); driver.
-		 manage().window().maximize();*/
-		
-		//logger = Logger.getLogger("NexGen Studio");
-		//PropertyConfigurator.configure("Log4j.properties");
-		
-		if(br.equals("chrome"))
-				{
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Subhana Khan\\eclipse-workspace\\nxStudio_V1\\Drivers\\chromedriver.exe");
-				}
-		else if(br.equals("firefox"))
-		{
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Subhana Khan\\eclipse-workspace\\nxStudio_V1\\Drivers\\chromedriver.exe");
-	
-		}
+		 extent.attachReporter(spark);
+		 
+		 WebDriverManager.chromedriver().setup(); 
+		 driver = new ChromeDriver(); 
+		 driver.manage().window().maximize();
 		
 	}
 	
 	@AfterClass
 	public void tearDown()
 	{
-		
-		driver.quit();
+		extent.flush();
+		//driver.quit();
 	}
 	
 }
