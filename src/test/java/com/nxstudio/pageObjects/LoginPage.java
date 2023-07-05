@@ -46,6 +46,12 @@ public class LoginPage {
 		txtUserName.sendKeys(uname);
 	}
 	
+	public void setinvalidUserName(String invalidname)
+	{
+		txtUserName.sendKeys(invalidname);
+	}
+	
+	
 	public void setUserPassword(String upassword)
 	{
 		txtPassword.sendKeys(upassword);

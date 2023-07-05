@@ -146,6 +146,34 @@ public class TC_Login_001 extends BaseClass {
 		
 		
 		@Test(priority = 7)
+		public void invalidEmailFormat() throws InterruptedException
+		{
+			ExtentTest test = extent.createTest("Invalid Email Format").assignAuthor("Subhana").assignDevice("Windows")
+			.assignCategory("Smoke Test");
+			
+			
+			driver.get(baseURL);
+			
+			
+			Thread.sleep(3000);
+			LoginPage lp = new LoginPage(driver);
+			lp.setinvalidUserName(invalidusername);
+			lp.setUserPassword(password);
+			
+			Thread.sleep(3000);
+			lp.clickSubmit();
+			Thread.sleep(5000);
+			
+			/*
+			 * Thread.sleep(5000); 
+			 * lp.clickLogout();
+			 */
+			
+			test.log(Status.FAIL, "Invalid Email address");
+		}
+		
+		
+		@Test(priority = 8)
 		public void Login() throws InterruptedException
 		{
 			ExtentTest test = extent.createTest("Login").assignAuthor("Subhana").assignDevice("Windows")
@@ -172,33 +200,7 @@ public class TC_Login_001 extends BaseClass {
 		}
 		
 		
-		@Test(priority = 8)
-		public void invalidEmailFormat() throws InterruptedException
-		{
-			ExtentTest test = extent.createTest("Login").assignAuthor("Subhana").assignDevice("Windows")
-			.assignCategory("Smoke Test");
-			
-			
-			driver.get(baseURL);
-			driver.findElement(By.id("login-email-field")).sendKeys("123rdff42");
-			
-			
-			
-			Thread.sleep(3000);
-			LoginPage lp = new LoginPage(driver);
-			lp.setUserPassword(password);
-			
-			Thread.sleep(3000);
-			lp.clickSubmit();
-			Thread.sleep(5000);
-			
-			/*
-			 * Thread.sleep(5000); 
-			 * lp.clickLogout();
-			 */
-			
-			test.log(Status.PASS, "User Login successfully");
-		}
+		
 		
 		
 

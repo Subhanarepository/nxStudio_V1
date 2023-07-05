@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.nxstudio.testCases.TC_ForgetPassword_01">
+      <class name="com.nxstudio.testCases.TC_Login_001">
         <methods>
           <include name="tearDown"/>
           <include name="setup"/>
-          <include name="invalidEmailFormat"/>
+          <include name="verifyTitle"/>
         </methods>
-      </class> <!-- com.nxstudio.testCases.TC_ForgetPassword_01 -->
+      </class> <!-- com.nxstudio.testCases.TC_Login_001 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

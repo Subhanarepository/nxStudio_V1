@@ -16,6 +16,7 @@ public class BaseClass {
 	//Login
 	public String baseURL = "https://nxcasadigi-studio-qa.project.casadigi.com/login";
 	public String username = "subhana.khan@digivalet.com";
+	public String invalidusername = "mndbjf87498";
 	public String password = "CasaDigi@4.0";
 	public static WebDriver driver;
 	
